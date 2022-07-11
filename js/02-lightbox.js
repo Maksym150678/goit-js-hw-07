@@ -18,32 +18,11 @@ const galleryCardsArr = galleryItems
 
 
 galleryList.innerHTML = galleryCardsArr;
-galleryList.addEventListener("click", (event) => {
-    event.preventDefault();
 
-    const target = event.target;
-    if (target.nodeName !== "IMG") {
-        return;
-    }
 
-    const instance = basicLightbox.create(
+ 
 
-        `<img src="${target.dataset.source}" width="800" height="600">`
-    );
-    instance.show();
-    
-    window.addEventListener('keydown', onEscBtnPush);
-
-    function onEscBtnPush (event) {
-        if (event.code !== 'Escape') {
-            return;
-            }
-            instance.close();
-        
-    }
-});
-
-galleryList.insertAdjacentHTML("afterbegin", galleryCardsArr.join(""));
+galleryList.insertAdjacentHTML("afterbegin", galleryCardsArr);
 
 var lightbox = new SimpleLightbox(".gallery a", {
 captionsData: "alt",
